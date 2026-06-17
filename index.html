@@ -7,30 +7,32 @@
   <meta name="description" content="Personal portfolio of Larvs — building self-hosted tools." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #0a0a0a;
-      --surface:   #161616;
-      --surface-2: #222222;
-      --border:    #2d2d2d;
-      --text:      #f0f0f0;
-      --text-muted: #777777;
-      --accent:    #f5c200;
-      --accent-dark: #c9a000;
-      --radius:    8px;
-      --font: 'Inter', system-ui, sans-serif;
+      --bg:         #0c0e18;
+      --surface:    #131520;
+      --surface-2:  #1c1f2e;
+      --border:     #272b3d;
+      --text:       #e4e7f5;
+      --muted:      #7880a8;
+      --accent:     #4d7ef6;
+      --accent-dim: rgba(77, 126, 246, 0.18);
+      --radius:     8px;
+      --font:       'Inter', system-ui, sans-serif;
     }
 
     [data-theme="light"] {
-      --bg:        #f7f7f5;
-      --surface:   #ffffff;
-      --surface-2: #f0f0ee;
-      --border:    #e0e0dd;
-      --text:      #111111;
-      --text-muted: #6b6b6b;
+      --bg:         #f2f4fc;
+      --surface:    #ffffff;
+      --surface-2:  #e8eaf8;
+      --border:     #cdd2ef;
+      --text:       #0e1021;
+      --muted:      #5d6490;
+      --accent:     #3a6bef;
+      --accent-dim: rgba(58, 107, 239, 0.1);
     }
 
     html { scroll-behavior: smooth; }
@@ -58,32 +60,32 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 2rem;
-      height: 64px;
-      background: rgba(10, 10, 10, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      height: 60px;
+      background: rgba(12, 14, 24, 0.8);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
     }
 
     [data-theme="light"] nav {
-      background: rgba(247, 247, 245, 0.85);
+      background: rgba(242, 244, 252, 0.82);
     }
 
     .nav-brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
     }
 
     .nav-avatar {
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
       border: 1px solid var(--border);
     }
 
     .nav-name {
-      font-size: 0.9375rem;
+      font-size: 0.9rem;
       font-weight: 600;
       letter-spacing: -0.02em;
     }
@@ -91,7 +93,7 @@
     .nav-right {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
     }
 
     /* ── Buttons ─────────────────────────────────── */
@@ -100,50 +102,50 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 7px 14px;
+      padding: 6px 13px;
       border-radius: var(--radius);
-      font-size: 0.875rem;
+      font-size: 0.8125rem;
       font-weight: 500;
       font-family: var(--font);
       cursor: pointer;
-      transition: all 0.15s ease;
+      transition: all 0.15s;
       border: none;
       line-height: 1;
       white-space: nowrap;
     }
 
-    .btn-outline {
+    .btn-ghost {
       background: transparent;
       border: 1px solid var(--border);
-      color: var(--text-muted);
+      color: var(--muted);
     }
 
-    .btn-outline:hover {
-      border-color: var(--text-muted);
-      color: var(--text);
-      background: var(--surface);
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-dim);
     }
 
-    .theme-toggle {
-      width: 34px;
-      height: 34px;
+    .btn-square {
       padding: 0;
+      width: 32px;
+      height: 32px;
       justify-content: center;
     }
 
-    .theme-toggle svg { width: 15px; height: 15px; flex-shrink: 0; }
+    .btn-square svg { width: 14px; height: 14px; flex-shrink: 0; }
 
     .icon-moon { display: none; }
     [data-theme="light"] .icon-sun  { display: none; }
     [data-theme="light"] .icon-moon { display: block; }
 
-    /* ── Main content ────────────────────────────── */
+    /* ── Wrap ────────────────────────────────────── */
 
     .wrap {
       flex: 1;
       max-width: 680px;
       margin: 0 auto;
-      padding: 4.5rem 2rem 6rem;
+      padding: 4rem 2rem 6rem;
       width: 100%;
     }
 
@@ -151,32 +153,33 @@
 
     .profile {
       display: flex;
-      align-items: center;
-      gap: 1.25rem;
-      padding-bottom: 2.75rem;
-      margin-bottom: 2.75rem;
+      align-items: flex-start;
+      gap: 1.125rem;
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
       border-bottom: 1px solid var(--border);
     }
 
     .avatar {
-      width: 60px;
-      height: 60px;
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
-      border: 1px solid var(--border);
+      border: 1.5px solid var(--border);
       flex-shrink: 0;
     }
 
     .profile-info h1 {
-      font-size: 1.25rem;
+      font-size: 1.125rem;
       font-weight: 700;
-      letter-spacing: -0.025em;
+      letter-spacing: -0.02em;
       margin-bottom: 0.2rem;
     }
 
-    .profile-info .bio {
-      font-size: 0.875rem;
-      color: var(--text-muted);
+    .bio {
+      font-size: 0.8125rem;
+      color: var(--muted);
       margin-bottom: 0.875rem;
+      font-style: italic;
     }
 
     .profile-links {
@@ -185,35 +188,36 @@
       flex-wrap: wrap;
     }
 
-    /* ── Section label ───────────────────────────── */
+    /* ── Section ─────────────────────────────────── */
 
     .section-label {
       font-size: 0.6875rem;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       color: var(--accent);
-      margin-bottom: 1rem;
+      margin-bottom: 0.875rem;
+      opacity: 0.8;
     }
 
-    /* ── Project grid ────────────────────────────── */
+    /* ── Cards ───────────────────────────────────── */
 
     .projects {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
       gap: 1px;
       background: var(--border);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 10px;
       overflow: hidden;
     }
 
     .card {
       background: var(--surface);
-      padding: 1.375rem 1.5rem;
+      padding: 1.375rem 1.375rem 1.25rem;
       display: flex;
       flex-direction: column;
-      gap: 0.875rem;
+      gap: 0.75rem;
       transition: background 0.15s;
     }
 
@@ -222,13 +226,13 @@
     .card-top {
       display: flex;
       align-items: center;
-      gap: 0.875rem;
+      gap: 0.8rem;
     }
 
     .icon-wrap {
-      width: 42px;
-      height: 42px;
-      border-radius: 9px;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
       overflow: hidden;
       flex-shrink: 0;
       display: flex;
@@ -236,52 +240,60 @@
       justify-content: center;
       border: 1px solid var(--border);
       background: var(--surface-2);
-      font-size: 1rem;
+      font-size: 0.9375rem;
       font-weight: 700;
-      color: var(--text-muted);
+      color: var(--muted);
     }
 
     .icon-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     .card-name {
-      font-size: 0.9375rem;
+      font-size: 0.9rem;
       font-weight: 600;
-      letter-spacing: -0.015em;
-      margin-bottom: 0.3rem;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.25rem;
     }
 
     .version-badge {
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      padding: 2px 8px;
-      border: 1px solid rgba(245, 194, 0, 0.3);
+      padding: 1px 7px;
+      border: 1px solid var(--border);
       border-radius: 100px;
       font-size: 0.6875rem;
       font-weight: 500;
+      color: var(--muted);
+      background: var(--surface-2);
+    }
+
+    .version-badge.loaded {
+      border-color: rgba(77, 126, 246, 0.4);
       color: var(--accent);
+      background: var(--accent-dim);
     }
 
     .version-dot {
-      width: 5px;
-      height: 5px;
-      background: var(--accent);
+      width: 4px;
+      height: 4px;
+      background: currentColor;
       border-radius: 50%;
       flex-shrink: 0;
     }
 
     .card-desc {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      line-height: 1.6;
+      font-size: 0.8125rem;
+      color: var(--muted);
+      line-height: 1.65;
       flex: 1;
+      font-style: italic;
     }
 
     /* ── Footer ──────────────────────────────────── */
 
     footer {
       border-top: 1px solid var(--border);
-      padding: 1.5rem 2rem;
+      padding: 1.25rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -294,20 +306,22 @@
       font-size: 0.8125rem;
       font-weight: 600;
       color: var(--accent);
+      opacity: 0.8;
     }
 
     .footer-sub {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 1px;
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-top: 2px;
+      font-style: italic;
     }
 
     /* ── Responsive ──────────────────────────────── */
 
     @media (max-width: 600px) {
       nav { padding: 0 1rem; }
-      .wrap { padding: 3rem 1rem 5rem; }
-      .profile { flex-direction: column; align-items: flex-start; }
+      .wrap { padding: 2.5rem 1rem 5rem; }
+      .profile { flex-direction: column; }
       .projects { grid-template-columns: 1fr; }
       footer { padding: 1.25rem 1rem; }
     }
@@ -321,13 +335,13 @@
       <span class="nav-name">Larvs</span>
     </a>
     <div class="nav-right">
-      <a class="btn btn-outline" href="https://github.com/Revise0592" target="_blank" rel="noopener noreferrer">
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+      <a class="btn btn-ghost" href="https://github.com/Revise0592" target="_blank" rel="noopener noreferrer">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
           <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
         </svg>
         GitHub
       </a>
-      <button class="btn btn-outline theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+      <button class="btn btn-ghost btn-square" onclick="toggleTheme()" aria-label="Toggle theme">
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="12" cy="12" r="5"/>
           <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
@@ -350,13 +364,13 @@
         <h1>Larvs</h1>
         <p class="bio">Building self-hosted tools. United Kingdom.</p>
         <div class="profile-links">
-          <a class="btn btn-outline" href="https://github.com/Revise0592" target="_blank" rel="noopener noreferrer">
+          <a class="btn btn-ghost" href="https://github.com/Revise0592" target="_blank" rel="noopener noreferrer">
             <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
               <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
             </svg>
             GitHub
           </a>
-          <a class="btn btn-outline" id="bmc-btn" href="#" target="_blank" rel="noopener noreferrer" style="display:none">
+          <a class="btn btn-ghost" id="bmc-btn" href="#" target="_blank" rel="noopener noreferrer" style="display:none">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M17 8h1a4 4 0 0 1 0 8h-1"/>
               <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/>
@@ -386,7 +400,7 @@
           </div>
         </div>
         <p class="card-desc">Self-hosted car maintenance dashboard</p>
-        <a class="btn btn-outline" style="width:fit-content" href="https://github.com/Revise0592/Carvey" target="_blank" rel="noopener noreferrer">
+        <a class="btn btn-ghost" style="width:fit-content" href="https://github.com/Revise0592/Carvey" target="_blank" rel="noopener noreferrer">
           <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
             <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
           </svg>
@@ -406,7 +420,7 @@
           </div>
         </div>
         <p class="card-desc">A self-hosted archive for film photography.</p>
-        <a class="btn btn-outline" style="width:fit-content" href="https://github.com/Revise0592/grained" target="_blank" rel="noopener noreferrer">
+        <a class="btn btn-ghost" style="width:fit-content" href="https://github.com/Revise0592/grained" target="_blank" rel="noopener noreferrer">
           <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
             <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
           </svg>
@@ -428,7 +442,6 @@
   <script>
     const GH = 'Revise0592';
 
-    // Persist theme
     const saved = localStorage.getItem('theme');
     if (saved) document.documentElement.setAttribute('data-theme', saved);
 
@@ -439,12 +452,14 @@
     }
 
     async function fetchVersion(repo, wrapperId) {
-      const tag = document.querySelector(`#${wrapperId} .version-tag`);
+      const badge = document.getElementById(wrapperId);
+      const tag   = badge.querySelector('.version-tag');
       try {
         const res = await fetch(`https://api.github.com/repos/${GH}/${repo}/releases/latest`);
         if (!res.ok) { tag.textContent = '—'; return; }
         const { tag_name } = await res.json();
         tag.textContent = tag_name || '—';
+        if (tag_name) badge.classList.add('loaded');
       } catch { tag.textContent = '—'; }
     }
 
