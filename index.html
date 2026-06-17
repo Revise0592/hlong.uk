@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Larvs</title>
+  <meta name="description" content="Personal portfolio of Larvs — building self-hosted tools." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #f8f6f3;
+      --surface: #ffffff;
+      --border:  #e6e2dc;
+      --text:    #1c1917;
+      --muted:   #78716c;
+      --subtle:  #a8a29e;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 5rem 1.5rem 7rem;
+    }
+
+    /* ── Header ─────────────────────────────────── */
+
+    .header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .avatar {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      margin-bottom: 1.125rem;
+      display: block;
+      margin-inline: auto;
+    }
+
+    h1 {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 1.875rem;
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.375rem;
+    }
+
+    .location {
+      font-family: 'Lora', Georgia, serif;
+      font-style: italic;
+      color: var(--subtle);
+      font-size: 0.875rem;
+      margin-bottom: 1.375rem;
+    }
+
+    .links {
+      display: flex;
+      gap: 0.625rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.8125rem;
+      color: var(--muted);
+      text-decoration: none;
+      background: var(--surface);
+      transition: color 0.15s, border-color 0.15s;
+      line-height: 1;
+    }
+
+    .pill:hover {
+      color: var(--text);
+      border-color: #a8a29e;
+    }
+
+    .pill svg { flex-shrink: 0; }
+
+    /* ── Project cards ───────────────────────────── */
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+      gap: 1.125rem;
+      width: 100%;
+      max-width: 660px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.375rem 1.5rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      margin-bottom: 0.875rem;
+    }
+
+    .icon-wrap {
+      width: 46px;
+      height: 46px;
+      border-radius: 11px;
+      overflow: hidden;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+    }
+
+    .icon-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .icon-letter {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 1.125rem;
+      font-weight: 600;
+    }
+
+    .icon-carvey  { background: #fdf4ec; color: #92592a; }
+    .icon-grained { background: #edf2f8; color: #2a5992; }
+
+    .card-meta { min-width: 0; }
+
+    .card-name {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      margin-bottom: 0.3rem;
+    }
+
+    .version {
+      display: inline-block;
+      font-size: 0.6875rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--subtle);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.01em;
+    }
+
+    .card-desc {
+      font-family: 'Lora', Georgia, serif;
+      font-style: italic;
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.6;
+      flex: 1;
+      margin-bottom: 1.125rem;
+    }
+
+    .gh-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.8125rem;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 0.35rem 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      width: fit-content;
+      background: var(--bg);
+      transition: color 0.15s, border-color 0.15s, background 0.15s;
+    }
+
+    .gh-btn:hover {
+      color: var(--text);
+      border-color: #a8a29e;
+      background: var(--surface);
+    }
+
+    /* ── Footer ──────────────────────────────────── */
+
+    footer {
+      margin-top: 5rem;
+      font-family: 'Lora', Georgia, serif;
+      font-style: italic;
+      font-size: 0.8125rem;
+      color: var(--border);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <img
+      class="avatar"
+      src="https://avatars.githubusercontent.com/u/96446305?v=4"
+      alt="Larvs avatar"
+    />
+    <h1>Larvs</h1>
+    <p class="location">United Kingdom</p>
+    <nav class="links">
+      <a class="pill" href="https://github.com/Revise0592" target="_blank" rel="noopener noreferrer">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+          0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+          -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07
+          -.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08
+          -.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09
+          2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82
+          2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01
+          2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+        Revise0592
+      </a>
+      <a class="pill" id="bmc-pill" href="#" target="_blank" rel="noopener noreferrer" style="display:none">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20.216 6.415l-.132-.666c-.119-.598-.388-1.163-
+          .818-1.622-.43-.46-.997-.78-1.614-.924l-.667-.135-.138-.667a3.098
+          3.098 0 00-.82-1.617 3.099 3.099 0 00-1.62-.822L14.74 0l-.138.667
+          a3.098 3.098 0 00-.82 1.617 3.099 3.099 0 00-1.619.822 3.099 3.099
+          0 00-.82 1.617L11.205 5.4l-.666.138a3.099 3.099 0 00-1.62.823 3.098
+          3.098 0 00-.82 1.614l-.133.666.666.138a3.098 3.098 0 001.614.82
+          3.099 3.099 0 00.823 1.62l.138.666.666-.133a3.099 3.099 0 001.62
+          -.82 3.098 3.098 0 001.614.82l.666.133.138-.666a3.099 3.099 0 00
+          .823-1.62 3.098 3.098 0 001.614-.82l.666-.138zM12 9a3 3 0 110
+          6 3 3 0 010-6z"/>
+        </svg>
+        Buy me a coffee
+      </a>
+    </nav>
+  </header>
+
+  <main class="projects">
+
+    <article class="card">
+      <div class="card-top">
+        <div class="icon-wrap icon-carvey" id="carvey-icon">
+          <span class="icon-letter">C</span>
+        </div>
+        <div class="card-meta">
+          <div class="card-name">Carvey</div>
+          <span class="version" id="carvey-version">loading…</span>
+        </div>
+      </div>
+      <p class="card-desc">Self-hosted car maintenance dashboard</p>
+      <a class="gh-btn" href="https://github.com/Revise0592/Carvey" target="_blank" rel="noopener noreferrer">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+          0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+          -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07
+          -.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08
+          -.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09
+          2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82
+          2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01
+          2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+        View on GitHub
+      </a>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <div class="icon-wrap icon-grained" id="grained-icon">
+          <span class="icon-letter">G</span>
+        </div>
+        <div class="card-meta">
+          <div class="card-name">grained</div>
+          <span class="version" id="grained-version">loading…</span>
+        </div>
+      </div>
+      <p class="card-desc">A self-hosted archive for film photography.</p>
+      <a class="gh-btn" href="https://github.com/Revise0592/grained" target="_blank" rel="noopener noreferrer">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+          0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+          -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07
+          -.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08
+          -.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09
+          2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82
+          2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01
+          2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+        View on GitHub
+      </a>
+    </article>
+
+  </main>
+
+  <footer>hlong.uk</footer>
+
+  <script>
+    const GH = 'Revise0592';
+
+    async function fetchVersion(repo, elId) {
+      try {
+        const res = await fetch(`https://api.github.com/repos/${GH}/${repo}/releases/latest`);
+        const el = document.getElementById(elId);
+        if (!res.ok) { el.textContent = '—'; return; }
+        const { tag_name } = await res.json();
+        el.textContent = tag_name || '—';
+      } catch { document.getElementById(elId).textContent = '—'; }
+    }
+
+    async function fetchSocials() {
+      try {
+        const res = await fetch(`https://api.github.com/users/${GH}/social_accounts`);
+        if (!res.ok) return;
+        const accounts = await res.json();
+        const bmc = accounts.find(a =>
+          a.provider === 'buymeacoffee' ||
+          (a.url && a.url.includes('buymeacoffee'))
+        );
+        if (bmc?.url) {
+          const pill = document.getElementById('bmc-pill');
+          pill.href = bmc.url;
+          pill.style.display = 'inline-flex';
+        }
+      } catch {}
+    }
+
+    async function tryLoadIcon(src, wrapId) {
+      return new Promise(resolve => {
+        const img = new Image();
+        img.onload = () => {
+          const wrap = document.getElementById(wrapId);
+          wrap.innerHTML = '';
+          wrap.style.background = 'transparent';
+          wrap.style.border = '1px solid var(--border)';
+          wrap.appendChild(img);
+          resolve(true);
+        };
+        img.onerror = () => resolve(false);
+        img.src = src;
+        img.alt = '';
+      });
+    }
+
+    fetchVersion('Carvey', 'carvey-version');
+    fetchVersion('grained', 'grained-version');
+    fetchSocials();
+
+    tryLoadIcon('https://carvey.app/apple-touch-icon.png', 'carvey-icon')
+      .then(ok => !ok && tryLoadIcon('https://carvey.app/favicon.ico', 'carvey-icon'));
+  </script>
+
+</body>
+</html>
